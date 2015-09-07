@@ -5,6 +5,12 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+#folders
+node_modules/
+css/sass/.sass-cache/
+.sass-cache/
+
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
