@@ -7,8 +7,8 @@ module.exports = function(grunt) {
     compass: { // Task
       dist: { // Target
         options: { // Target options
-          sassDir: 'public/css/sass',
-          cssDir: 'public/css',
+          sassDir: 'html/public/css/sass',
+          cssDir: 'html/public/css',
           environment: 'production'
         }
       },
@@ -16,18 +16,18 @@ module.exports = function(grunt) {
     sass: { // Task
       dist: { // Target
         options: { // Target options
-          style: 'compressed',
+          style: 'expanded',
           compass: false,
         },
         files: { // Dictionary of files
-          'public/css/style.css': 'public/css/sass/style.scss' // 'destination': 'source'
+          'html/public/css/style.css': 'html/public/css/sass/style.scss' // 'destination': 'source'
         }
       }
     },
     uglify: {
       build: {
-        src: 'public/js/script.js',
-        dest: 'public/js/script.min.js'
+        src: 'html/public/js/script.js',
+        dest: 'html/public/js/script.min.js'
       },
       options: {
         sourceMap: false
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         // We watch and compile sass files as normal but don't live reload here
-        files: ['public/css/sass/*.scss'],
+        files: ['html/public/css/sass/*.scss'],
         tasks: ['sass'],
       },
       liquid: {
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         },
-        files: ['public/css/*.css', 'html/*.html'],
+        files: ['html/public/css/*.css', 'html/*.html'],
       },
 
 
@@ -78,6 +78,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-liquid');
+  grunt.loadNpmTasks('grunt-serve');
 
   // 4. Указываем, какие задачи выполняются, когда мы вводим «grunt» в терминале
   grunt.registerTask('default', ['sass', 'uglify', 'liquid', 'compass', 'watch']);
